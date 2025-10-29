@@ -1,0 +1,23 @@
+name: Checks
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # или '18.x', '>=18'
+
+      - name: Start project
+        run: make setup
+      - name: Start test
+        run: make test
+      - name: Start lint
+        run: make lint
